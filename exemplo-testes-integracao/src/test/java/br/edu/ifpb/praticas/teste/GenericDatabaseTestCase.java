@@ -22,7 +22,7 @@ public abstract class GenericDatabaseTestCase {
     public void defaultSetUp() throws Exception {
         IDataSet dataSet = new FlatXmlDataSetBuilder().build(new FileInputStream((getDataSetFile())));
         databaseTester = new JdbcDatabaseTester("org.postgresql.Driver",
-                "jdbc:postgresql://localhost:5432/dbunit", "postgres", "123456");
+                "jdbc:postgresql://localhost:5432/dbunit", "dbunit", "123456");
         databaseTester.setDataSet(dataSet);
         databaseTester.setSetUpOperation(DatabaseOperation.INSERT);
         databaseTester.setTearDownOperation(DatabaseOperation.DELETE);

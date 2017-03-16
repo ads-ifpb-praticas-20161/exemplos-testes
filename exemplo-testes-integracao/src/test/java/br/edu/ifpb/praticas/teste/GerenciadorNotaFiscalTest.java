@@ -18,7 +18,7 @@ public class GerenciadorNotaFiscalTest extends GenericDatabaseTestCase {
         this.gerenciadorNotaFiscal = new GerenciadorNotaFiscal();
     }
 
-    @Test(expected = NotaFiscalException.class)
+    @Test
     public void naoDevePermitirDuasNotasParaOMesmoCliente() throws NotaFiscalException {
         Pedido pedido = new Pedido("Diogo Moreira", 26d, 7);
         gerenciadorNotaFiscal.gera(pedido);
