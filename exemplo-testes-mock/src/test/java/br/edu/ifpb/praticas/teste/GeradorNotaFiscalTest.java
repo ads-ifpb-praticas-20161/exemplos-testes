@@ -1,12 +1,8 @@
 package br.edu.ifpb.praticas.teste;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
 
 import java.util.Calendar;
 import java.util.LinkedList;
@@ -53,7 +49,7 @@ public class GeradorNotaFiscalTest {
     @Test
     public void geraNotaFiscalComDesconto() throws Exception {
         Pedido pedido = new Pedido("Diogo", 26d, 3);
-        NotaFiscal notaEmitida = gerador.gera(pedido);
+        NotaFiscal notaEmitida = gerador.gerar(pedido);
         assertEquals(26d * 0.94, notaEmitida.getValor(), 1.0);
         verify(dao, atLeastOnce()).persiste(notaEmitida);
     }
@@ -61,7 +57,7 @@ public class GeradorNotaFiscalTest {
     @Test(expected = NotaFiscalException.class)
     public void naoPermiteDuasNFsMesmoCliente() throws ObjetoNuloException, NotaFiscalException {
         Pedido pedido = new Pedido("Diego", 26d, 3);
-        NotaFiscal notaEmitida = gerador.gera(pedido);
+        NotaFiscal notaEmitida = gerador.gerar(pedido);
     }
 
 }

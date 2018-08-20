@@ -21,7 +21,7 @@ public class ExemploSeleniumWebDriverTest {
 
     @BeforeClass
     public static void setUpTest(){
-        System.setProperty("webdriver.chrome.driver", "chromedriver");
+        System.setProperty("webdriver.chrome.driver", "chromedriver_mac");
         driver = new ChromeDriver();
     }
 
@@ -36,7 +36,8 @@ public class ExemploSeleniumWebDriverTest {
     }
 
     @Test
-    public void testaTituloDaPagina(){
+    public void testaTituloDaPagina() throws InterruptedException {
+        Thread.sleep(2000L);
         assertEquals("Welcome to the Spring MVC Quickstart application! Get started quickly by signing up!", driver.getTitle());
     }
 
@@ -52,12 +53,16 @@ public class ExemploSeleniumWebDriverTest {
         element.sendKeys("admin");
         element = driver.findElement(By.id("inputPassword"));
         element.sendKeys("admin");
-        element = driver.findElement(By.tagName("button"));
+        element = driver.findElement(By.id("loginButton"));
         Thread.sleep(2000L);
         element.click();
         assertEquals("http://localhost:8080/", driver.getCurrentUrl());
         element = driver.findElement(By.id("logout"));
         assertNotNull(element);
+        element.click();
+        element = driver.findElement(By.id("login"));
+        assertNotNull(element);
+
     }
 
 }

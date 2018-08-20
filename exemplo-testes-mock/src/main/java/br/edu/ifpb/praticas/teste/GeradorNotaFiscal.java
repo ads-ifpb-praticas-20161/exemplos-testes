@@ -18,7 +18,7 @@ public class GeradorNotaFiscal {
         this.dao = dao;
     }
 
-    public NotaFiscal gera(Pedido pedido) throws ObjetoNuloException, NotaFiscalException {
+    public NotaFiscal gerar(Pedido pedido) throws ObjetoNuloException, NotaFiscalException {
         NotaFiscal nf = new NotaFiscal(pedido.getCliente(), pedido.getValorTotal() * 0.94, Calendar.getInstance());
 
         List<NotaFiscal> notas = dao.listar();
